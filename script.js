@@ -1,10 +1,14 @@
 $("#submit").click(function(e){
     e.preventDefault();
-    $(".entered-div").css("display","block");
-
     const number = $("#number").val();
-    const words = numberToWords(number);
-    $("#words").text(words);
+    const numberLength= number.toString().length;
+    if(numberLength>9){
+        $("#digit-info").css("display","block");
+    }else{
+        $(".entered-div").css("display","block");
+        const words = numberToWords(number);
+        $("#words").text(words);
+    }
 });
 
 
@@ -65,6 +69,24 @@ function numberToWords(number){
         return numberInWords;
     }
 
+    function crore(n){
+        if(n==0) return "";
+        let numberInWords ="";
+        const firstDigit = Math.floor(n/10000000);
+        const lastDigits = n%10000000;
+        if(lastDigits<100){
+            numberInWords = lessThen100(firstDigit)+" crore "+lessThen100(lastDigits); 
+        }
+        else if (lastDigits>=100 && lastDigits<1000){
+            numberInWords = lessThen100(firstDigit)+" crore "+hundred(lastDigits);
+        }else if (lastDigits>=1000 && lastDigits<10000){
+            numberInWords = lessThen100(firstDigit)+" crore "+thousand(lastDigits);
+        }else{
+            numberInWords = lessThen100(firstDigit)+" crore "+lack(lastDigits);
+        }
+        return numberInWords;
+    }
+
 
     let numberLength= number.toString().length;
     let words ='';
@@ -86,6 +108,9 @@ function numberToWords(number){
     }
     else if(number>=100000 && number<10000000){
         words = lack(number);
+    }
+    else if(number>=10000000 && number<1000000000){
+        words = crore(number);
     }
 
     return words;

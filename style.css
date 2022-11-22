@@ -6,6 +6,10 @@ form{
     width: 60%;            
 }
 
+#digit-info{
+    display: none; 
+    color: rgb(176, 37, 37);
+}
 .entered-div{
     display: none;
 }
