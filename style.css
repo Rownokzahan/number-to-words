@@ -1,0 +1,28 @@
+main.container{
+    width: 500px;
+    margin: auto;
+}
+form{
+    width: 60%;            
+}
+
+.entered-div{
+    display: none;
+}
+
+#words{
+    border-radius: 6px;
+    /* box-shadow: 0 0 2px 0px; */
+    padding: 3px 6px;
+    color: rgb(32, 2, 60);
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p{
+    font-size: 12px;
+}
